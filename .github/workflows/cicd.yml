@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install node_modules
+        run: npm install
 
       - name: Run tests
         run: npm test
