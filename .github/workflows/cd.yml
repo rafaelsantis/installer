@@ -20,3 +20,9 @@ jobs:
 
       - name: Deploy to AWS
         run: echo 'deploy'
+
+      - uses: avakar/tag-and-release@v1
+        with:
+          tag_name: v1.101.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
