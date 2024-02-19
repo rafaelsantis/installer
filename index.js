@@ -1,3 +1,3 @@
 //create a app whit comands
 
-console.log('teste inicial')
+console.log('teste inicial 2')
