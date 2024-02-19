@@ -13,11 +13,11 @@ jobs:
 
       - name: Run Changelog CI
         run: |
-          git clone origin main
+          git pull origin main
           echo 'Hello world!' >> hello.txt
           git config --global user.email "${GH_USERNAME}@users.noreply.github.com"
           git config --global user.name "${GH_USERNAME}"
-          git add -A
+          git add .
           git commit -m "Fix version"
           git push
         env:
