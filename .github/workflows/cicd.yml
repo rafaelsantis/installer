@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check if Pull Request is approved
+        uses: pull-request-approved/action@v1
+
+      - name: Deploy to AWS
+        run: echo 'deploy'
+        if: ${{ github.event.pull_request.state == 'closed' && github.event.pull_request.merged == true }}
